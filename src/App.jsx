@@ -2,7 +2,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import "./App.css";
 import { useGovernorsQuery } from "./hooks";
-import {useGraphQL} from "./useGraphQL"
+import { useGraphQL } from "./useGraphQL";
+import Profile from "./components/Profile";
+import Web3Provider from "./providers/Web3Provider";
 
 function App() {
   const queryClient = new QueryClient();
@@ -10,9 +12,9 @@ function App() {
   return (
     <QueryClientProvider contextSharing={true} client={queryClient}>
       <div className="App">
-        <Header />
-        <Governors />
-        <Proposals />
+        <Web3Provider>
+          <Profile />
+        </Web3Provider>
       </div>
     </QueryClientProvider>
   );
